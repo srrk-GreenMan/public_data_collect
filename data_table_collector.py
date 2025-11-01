@@ -12,9 +12,18 @@ import pathlib
 from typing import Any, Dict, List
 
 import matplotlib.pyplot as plt
+from matplotlib import font_manager, rc
 import pandas as pd
 import requests
+if any("Malgun Gothic" in f.name for f in font_manager.fontManager.ttflist):
+    plt.rcParams["font.family"] = "Malgun Gothic"
+else:
+    # Fall back to a generic sans-serif font while warning users that
+    # Malgun Gothic improves readability for Korean text.
+    rc("font", family="sans-serif")
 
+# Prevent minus signs from rendering as boxes when using Korean fonts.
+plt.rcParams["axes.unicode_minus"] = False
 
 DEFAULT_SERVICE = "ListAirQualityByDistrictService"
 DEFAULT_START_INDEX = 1

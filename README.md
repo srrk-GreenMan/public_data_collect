@@ -66,6 +66,22 @@ python data_table_collector.py <발급받은_API_KEY> \
 3. `save_csv` 함수가 DataFrame을 CSV 파일로 저장합니다.
 4. `render_table_image` 함수가 `matplotlib`를 이용해 표 이미지를 생성합니다.
 
+### 한글 폰트 설정
+
+- 스크립트는 시스템에 **맑은 고딕(Malgun Gothic)** 폰트가 설치되어 있으면 자동으로
+  사용합니다. Windows에서는 기본 제공되지만, macOS나 Linux에서는 별도로 설치해야
+  합니다.
+- 폰트가 없으면 일반 산세리프 폰트로 대체되므로 한글이 깨지지는 않지만, 화면상
+  가독성이 떨어질 수 있습니다.
+- Linux에서 폰트를 설치했다면 다음과 같이 `matplotlib` 폰트 캐시를 삭제하여
+  변경 사항을 반영하세요.
+
+  ```bash
+  rm -rf ~/.cache/matplotlib
+  ```
+
+  이후 스크립트를 다시 실행하면 새로 설치한 폰트가 적용됩니다.
+
 ### 참고 사항
 
 - API 호출 시 인증키가 올바르지 않거나 사용량 제한을 초과한 경우 오류가 발생할
